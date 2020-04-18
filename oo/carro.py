@@ -7,7 +7,7 @@ Você deve criar uma classe carro que vai possuir 2 atributos compostos por outr
 O motor terá a responsabilidade de controlar a velocidade. Ele oferece os seguintes atributos:
 1) Atributo de dado velocidade
 2) Metodo acelerar, que deverá incrementar a velocidade de uma unidade
-3) Metodo drear que deverá decrementar a velocidade em duas unidades
+3) Metodo frear que deverá decrementar a velocidade em duas unidades
 
 A Direção terá a responsabilidade de controlar a direção. Ela oferece os seguintes atributos:
 1) Valor de direção possiveis: Norte, Sul, Leste, Oeste
@@ -53,16 +53,16 @@ O       L
     >>> direcao.girar_a_direita()
     >>> direcao.valor
     'Norte'
-    >>> direcaodireçao.girar_a_esquerdaa()
+    >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Oeste'
-    >>> direcao.girar_a_esquerdaa()
+    >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Sul'
-    >>> direcao.girar_a_esquerdaa()
+    >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Leste'
-    >>> direcao.girar_a_esquerdaa()
+    >>> direcao.girar_a_esquerda()
     >>> direcao.valor
     'Norte'
     >>> carro = Carro(direcao, motor)
@@ -89,6 +89,24 @@ O       L
     >>> carro.calcular_direcao()
     >>> 'Oeste'
 """
+NORTE = 'Norte'
+LESTE = 'Leste'
+SUL = 'Sul'
+OESTE = 'Oeste'
+
+
+class Direcao:
+    rotacao_direita_dict = {NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE}
+    rotacao_esquerda_dict = {NORTE: OESTE, LESTE: NORTE, SUL: LESTE, OESTE: SUL}
+
+    def __init__(self):
+        self.valor = NORTE
+
+    def girar_a_direita(self):
+        self.valor = self.rotacao_direita_dict[self.valor]
+
+    def girar_a_esquerda(self):
+        self.valor = self.rotacao_esquerda_dict[self.valor]
 
 
 class Motor:
@@ -101,7 +119,3 @@ class Motor:
     def frear(self):
         self.velocidade -= 2
         self.velocidade = max(0, self.velocidade)
-
-
-class Direcao:
-    pass
