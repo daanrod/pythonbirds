@@ -18,9 +18,14 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f'{cls} - olhos{cls.olhos}'
 
+
+class Homem(Pessoa):
+    pass
+
+
 if __name__ == '__main__':
-    diego = Pessoa(nome='Diego')
-    danilo = Pessoa(diego, nome='Danilo')
+    diego = Homem(nome='Diego')
+    danilo = Homem(diego, nome='Danilo')
     print(Pessoa.cumprimentar(danilo))
     print(id(danilo))
     print((danilo.cumprimentar()))

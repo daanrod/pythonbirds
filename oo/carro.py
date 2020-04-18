@@ -123,6 +123,7 @@ OESTE = 'Oeste'
 
 
 class Direcao:
+
     # Dicionario de rotação
     rotacao_direita_dict = {NORTE: LESTE, LESTE: SUL, SUL: OESTE, OESTE: NORTE}
     rotacao_esquerda_dict = {NORTE: OESTE, LESTE: NORTE, SUL: LESTE, OESTE: SUL}
